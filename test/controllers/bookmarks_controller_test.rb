@@ -17,8 +17,8 @@ class BookmarksControllerTest < ActionController::TestCase
   end
 
   test "should create bookmark" do
-    assert_difference('Bookmark.count') do
-      post :create, bookmark: { clicks: @bookmark.clicks, description: @bookmark.description, title: @bookmark.title, url: @bookmark.url }
+    assert_difference('Bookmark.count', 1) do
+      post :create, bookmark: { description: @bookmark.description, title: @bookmark.title, url: @bookmark.url + "?hoge=hoge" }
     end
 
     assert_redirected_to bookmark_path(assigns(:bookmark))
@@ -45,5 +45,12 @@ class BookmarksControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to bookmarks_path
+  end
+
+  test "should jump bookmark with countup" do
+    assert_difference("Bookmark.find(@bookmark.id).clicks") do
+      get :jump, id: @bookmark
+    end
+    assert_redirected_to @bookmark.url
   end
 end

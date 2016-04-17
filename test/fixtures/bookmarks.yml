@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  url: MyString
+  url: "http://example.com"
   title: MyString
   description: MyText
-  clicks: 1
+  clicks: 0
 
 two:
-  url: MyString
+  url: "http://example.com/hoge/?arg=fugafuga"
   title: MyString
   description: MyText
-  clicks: 1
+  clicks: 25
