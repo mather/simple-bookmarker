@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-  before_action :set_bookmark, only: [:show, :edit, :update, :destroy]
+  before_action :set_bookmark, only: [:show, :edit, :update, :destroy, :jump]
 
   # GET /bookmarks
   # GET /bookmarks.json
@@ -58,6 +58,18 @@ class BookmarksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to bookmarks_url, notice: 'Bookmark was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def jump
+    @bookmark.increment
+
+    respond_to do |format|
+      if @bookmark.save
+        format.html { redirect_to @bookmark.url, status: 302 }
+      else
+        format.html { redirect_to :back }
+      end
     end
   end
 

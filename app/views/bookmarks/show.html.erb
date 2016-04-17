@@ -2,7 +2,7 @@
 
 <p>
   <strong>Url:</strong>
-  <%= @bookmark.url %>
+  <%= link_to @bookmark.url, jump_bookmark_path(@bookmark) %>
 </p>
 
 <p>
