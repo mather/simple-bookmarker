@@ -61,6 +61,7 @@ class BookmarksController < ApplicationController
     end
   end
 
+  # GET /bookmarks
   def jump
     @bookmark.increment
 

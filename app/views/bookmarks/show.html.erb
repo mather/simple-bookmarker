@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <strong>Tags:</strong>
+  <%= @bookmark.tags.map(&:name).join(",") %>
+</p>
+
+<p>
   <strong>Clicks:</strong>
   <%= @bookmark.clicks %>
 </p>
