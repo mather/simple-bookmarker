@@ -18,7 +18,7 @@ class BookmarksControllerTest < ActionController::TestCase
 
   test "should create bookmark" do
     assert_difference('Bookmark.count', 1) do
-      post :create, bookmark: { description: @bookmark.description, title: @bookmark.title, url: @bookmark.url + "?hoge=hoge" }
+      post :create, bookmark: { description: @bookmark.description, title: @bookmark.title, url: @bookmark.url + "?hoge=hoge" }, item: { tags: ["hoge"] }
     end
 
     assert_redirected_to bookmark_path(assigns(:bookmark))
@@ -35,7 +35,7 @@ class BookmarksControllerTest < ActionController::TestCase
   end
 
   test "should update bookmark" do
-    patch :update, id: @bookmark, bookmark: { clicks: @bookmark.clicks, description: @bookmark.description, title: @bookmark.title, url: @bookmark.url }
+    patch :update, id: @bookmark, bookmark: { clicks: @bookmark.clicks, description: @bookmark.description, title: @bookmark.title, url: @bookmark.url }, item: { tags: ["hoge"] }
     assert_redirected_to bookmark_path(assigns(:bookmark))
   end
 
