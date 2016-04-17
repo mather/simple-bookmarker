@@ -27,10 +27,14 @@ ActiveRecord::Schema.define(version: 20160417070056) do
     t.integer "tag_id"
   end
 
+  add_index "bookmarks_tags", ["bookmark_id", "tag_id"], name: "index_bookmarks_tags_on_bookmark_id_and_tag_id", unique: true
+
   create_table "tags", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
 
 end

@@ -93,8 +93,9 @@ class BookmarksController < ApplicationController
 
     def param_tags
       if params.has_key?(:item) and params[:item].has_key?(:tags)
+        tags = Tag.all.to_a
         params[:item][:tags].map { |tag_name|
-          Tag.new(name: tag_name)
+          tags.detect { |t| t.name == tag_name } || Tag.new(name: tag_name)
         }
       else
         []
