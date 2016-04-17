@@ -24,6 +24,14 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :tags %><br>
+    <ul id="tags">
+      <% @bookmark.tags.each do |tag| %>
+        <li><%= tag.name %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="field">
     <%= f.label :clicks %><br>
     <%= @bookmark.clicks %>
   </div>

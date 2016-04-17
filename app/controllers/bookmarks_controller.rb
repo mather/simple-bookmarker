@@ -25,6 +25,10 @@ class BookmarksController < ApplicationController
   # POST /bookmarks.json
   def create
     @bookmark = Bookmark.new(bookmark_params)
+    
+    params[:item][:tags].map { |tag_name|
+      Tag.new(name: tag_name)
+    }.each { |tag| @bookmark.tags << tag }
 
     respond_to do |format|
       if @bookmark.save
@@ -61,7 +65,7 @@ class BookmarksController < ApplicationController
     end
   end
 
-  # GET /bookmarks
+  # GET /bookmarks/1/jump
   def jump
     @bookmark.increment
 
@@ -82,6 +86,6 @@ class BookmarksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bookmark_params
-      params.require(:bookmark).permit(:url, :title, :description, :clicks)
+      params.require(:bookmark).permit(:url, :title, :description)
     end
 end
