@@ -1,0 +1,6 @@
+{
+  "name": "SimpleBookmarker",
+  "description": "Bookmark service for internal use",
+  "repository": "https://github.com/mather/simple-bookmarker",
+  "keywords": ["ruby", "ruby on rails"]
+}
