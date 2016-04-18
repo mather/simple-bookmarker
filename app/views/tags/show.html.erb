@@ -1,3 +1,9 @@
 <h1>Tag: <%= @tag.name %></h1>
 
+<ul>
+  <% @bookmarks.each do |bookmark| %>
+    <li><%= link_to bookmark.title, bookmark_path(bookmark) %></li>
+  <% end %>
+</ul>
+
 <%= link_to "Back", tags_path %>

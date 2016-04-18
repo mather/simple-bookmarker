@@ -5,6 +5,7 @@ class TagsController < ApplicationController
   end
 
   def show
+    @bookmarks = @tag.bookmarks
   end
 
 private
