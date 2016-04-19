@@ -2,12 +2,12 @@
 
 one:
   url: "http://example.com"
-  title: MyString
+  title: "title one"
   description: MyText
   clicks: 0
 
 two:
   url: "http://example.com/hoge/?arg=fugafuga"
-  title: MyString
+  title: "MyString"
   description: MyText
   clicks: 25

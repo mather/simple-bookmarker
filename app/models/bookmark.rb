@@ -11,4 +11,13 @@ class Bookmark < ActiveRecord::Base
   def increment
     self.clicks += 1
   end
+
+  def self.search(query)
+    if query
+      t = Bookmark.arel_table
+      @bookmarks = Bookmark.where(t[:title].matches("%#{query}%").or(t[:description].matches("%#{query}%")))
+    else
+      @bookmarks = Bookmark.all
+    end
+  end
 end

@@ -5,13 +5,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks?q=substring
   # GET /bookmarks.json
   def index
-    if params[:q]
-      @query = params[:q]
-      t = Bookmark.arel_table
-      @bookmarks = Bookmark.where(t[:title].matches("%#{@query}%").or(t[:description].matches("%#{@query}%")))
-    else
-      @bookmarks = Bookmark.all
-    end
+    @bookmarks = Bookmark.search(params[:q])
   end
 
   # GET /bookmarks/1
@@ -49,8 +43,6 @@ class BookmarksController < ApplicationController
   # PATCH/PUT /bookmarks/1
   # PATCH/PUT /bookmarks/1.json
   def update
-    @bookmark.tags
-
     @bookmark.tags = param_tags
 
     respond_to do |format|
@@ -99,7 +91,7 @@ class BookmarksController < ApplicationController
     end
 
     def param_tags
-      if params.has_key?(:item) and params[:item].has_key?(:tags)
+      if params[:item] and params[:item][:tags]
         tags = Tag.all.to_a
         params[:item][:tags].map { |tag_name|
           tags.detect { |t| t.name == tag_name } || Tag.new(name: tag_name)
