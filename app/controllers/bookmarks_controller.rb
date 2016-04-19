@@ -2,9 +2,16 @@ class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy, :jump]
 
   # GET /bookmarks
+  # GET /bookmarks?q=substring
   # GET /bookmarks.json
   def index
-    @bookmarks = Bookmark.all
+    if params[:q]
+      @query = params[:q]
+      t = Bookmark.arel_table
+      @bookmarks = Bookmark.where(t[:title].matches("%#{@query}%").or(t[:description].matches("%#{@query}%")))
+    else
+      @bookmarks = Bookmark.all
+    end
   end
 
   # GET /bookmarks/1

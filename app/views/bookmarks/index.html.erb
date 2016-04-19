@@ -4,6 +4,11 @@
 
 <%= link_to 'Tag List', tags_path %>
 
+<%= form_tag(bookmarks_path, method: :get) do %>
+  <%= text_field_tag 'q', @query, placeholder: "Search bookmark", autofocus: true %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <table>
   <thead>
     <tr>
