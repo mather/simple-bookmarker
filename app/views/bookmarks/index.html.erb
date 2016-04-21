@@ -1,40 +1,42 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Bookmarks</h1>
-
-<%= link_to 'Tag List', tags_path %>
-
-<%= form_tag(bookmarks_path, method: :get) do %>
-  <%= text_field_tag 'q', @query, placeholder: "Search bookmark", autofocus: true %>
-  <%= submit_tag "Search" %>
-<% end %>
-
-<table>
+<%- model_class = Bookmark -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Url</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Clicks</th>
-      <th colspan="3"></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:url) %></th>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:clicks) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @bookmarks.each do |bookmark| %>
       <tr>
+        <td><%= link_to bookmark.id, bookmark_path(bookmark) %></td>
         <td><%= bookmark.url %></td>
         <td><%= bookmark.title %></td>
         <td><%= bookmark.description %></td>
         <td><%= bookmark.clicks %></td>
-        <td><%= link_to 'Show', bookmark %></td>
-        <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-        <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l bookmark.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_bookmark_path(bookmark), :class => 'btn btn-default btn-xs' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      bookmark_path(bookmark),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-xs btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Bookmark', new_bookmark_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_bookmark_path,
+            :class => 'btn btn-primary' %>
