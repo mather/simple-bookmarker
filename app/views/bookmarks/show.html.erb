@@ -9,7 +9,7 @@
   <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
   <dd><%= @bookmark.title %></dd>
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @bookmark.description %></dd>
+  <dd><%= simple_format @bookmark.description %></dd>
   <dt><strong><%= model_class.human_attribute_name(:clicks) %>:</strong></dt>
   <dd><%= @bookmark.clicks %></dd>
 </dl>

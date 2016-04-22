@@ -21,3 +21,5 @@
 
 en:
   hello: "Hello world"
+  tag:
+    title: "Bookmark list for \"%{tag}\""

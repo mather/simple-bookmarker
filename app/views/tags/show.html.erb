@@ -1,11 +1,13 @@
 <%- model_class = Tag -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+  <h1><%= t 'tag.title', tag: @tag.name , default: model_class.model_name.human.titleize %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @tag.name %></dd>
+  <% @bookmarks.each do |bookmark| %>
+    <dt><strong><%= link_to bookmark.title, bookmark_path(bookmark) %>:</strong></dt>
+    <dd><%= link_to bookmark.url, jump_bookmark_path(bookmark) %></dd>
+  <% end %>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

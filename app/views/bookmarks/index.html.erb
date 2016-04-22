@@ -2,27 +2,31 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<%= form_tag(bookmarks_path, method: :get, ) do %>
+  <div class="col-md-4 col-md-offset-8">
+    <%= text_field_tag 'q', @query, placeholder: "Search bookmark", autofocus: true %>
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:url) %></th>
       <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:url) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:tags) %></th>
       <th><%= model_class.human_attribute_name(:clicks) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
   <tbody>
     <% @bookmarks.each do |bookmark| %>
       <tr>
-        <td><%= link_to bookmark.id, bookmark_path(bookmark) %></td>
-        <td><%= bookmark.url %></td>
-        <td><%= bookmark.title %></td>
-        <td><%= bookmark.description %></td>
-        <td><%= bookmark.clicks %></td>
-        <td><%=l bookmark.created_at %></td>
+        <td><%= link_to bookmark.title, bookmark_path(bookmark) %></td>
+        <td><%= link_to bookmark.url, jump_bookmark_path(bookmark) %></td>
+        <td><%= truncate(bookmark.description, length: 20) %></td>
+        <td><%= bookmark.tags.map(&:name).join(",") %></td>
+        <td><%= bookmark.clicks %> clicks</td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_bookmark_path(bookmark), :class => 'btn btn-default btn-xs' %>
