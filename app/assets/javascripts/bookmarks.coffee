@@ -3,7 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 ready = ->
-  $('#tags').tagit()
+  $('#tags').tagit
+    availableTags: gon.available_tags
 
 $(document).ready(ready)
 $(document).on("page:load", ready)

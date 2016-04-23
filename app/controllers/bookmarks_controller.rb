@@ -16,10 +16,12 @@ class BookmarksController < ApplicationController
   # GET /bookmarks/new
   def new
     @bookmark = Bookmark.new
+    gon.available_tags = Tag.all.map(&:name)
   end
 
   # GET /bookmarks/1/edit
   def edit
+    gon.available_tags = Tag.all.map(&:name)
   end
 
   # POST /bookmarks
