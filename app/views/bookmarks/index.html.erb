@@ -23,7 +23,7 @@
     <% @bookmarks.each do |bookmark| %>
       <tr>
         <td><%= link_to bookmark.title, bookmark_path(bookmark) %></td>
-        <td><%= link_to bookmark.url, jump_bookmark_path(bookmark) %></td>
+        <td><%= link_to fa_icon("external-link", text: bookmark.url) , jump_bookmark_path(bookmark), target: "_blank" %></td>
         <td><%= truncate(bookmark.description, length: 20) %></td>
         <td><%= bookmark.tags.map(&:name).join(",") %></td>
         <td><%= bookmark.clicks %> clicks</td>

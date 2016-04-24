@@ -31,6 +31,9 @@ gem "twitter-bootstrap-rails"
 # Pass object to JavaScript
 gem 'gon'
 
+# Font Awesome
+gem 'font-awesome-rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
