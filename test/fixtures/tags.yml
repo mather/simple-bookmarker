@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: test1
+tag_hoge1:
+  name: hoge1
 
-two:
-  name: test2
+tag_hoge2:
+  name: hoge2
+
+tag_hoge3:
+  name: hoge3
+
+tag_hoge4:
+  name: hoge4

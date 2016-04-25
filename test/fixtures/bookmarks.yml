@@ -3,11 +3,31 @@
 one:
   url: "http://example.com"
   title: "title one"
-  description: MyText
+  description: "hogehoge\nhugahuga"
   clicks: 0
 
 two:
   url: "http://example.com/hoge/?arg=fugafuga"
-  title: "MyString"
+  title: "Two"
   description: MyText
+  tags:
+    - tag_hoge1
+    - tag_hoge2
   clicks: 25
+
+hoge1:
+  url: "https://example.com/hoge/hoge1"
+  title: "Hoge1"
+  tags:
+    - tag_hoge1
+    - tag_hoge2
+    - tag_hoge3
+  clicks: 10
+
+hoge2:
+  url: "https://example.com/hoge/hoge2"
+  title: "Hoge2"
+  tags:
+    - tag_hoge1
+    - tag_hoge3
+  clicks: 10
