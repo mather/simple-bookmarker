@@ -1,33 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+bookmark1:
   url: "http://example.com"
   title: "title one"
   description: "hogehoge\nhugahuga"
   clicks: 0
 
-two:
+bookmark2:
   url: "http://example.com/hoge/?arg=fugafuga"
   title: "Two"
   description: MyText
   tags:
-    - tag_hoge1
-    - tag_hoge2
+    - tag1
+    - tag2
   clicks: 25
 
-hoge1:
+bookmark3:
   url: "https://example.com/hoge/hoge1"
   title: "Hoge1"
   tags:
-    - tag_hoge1
-    - tag_hoge2
-    - tag_hoge3
+    - tag1
+    - tag2
+    - tag3
   clicks: 10
 
-hoge2:
+bookmark4:
   url: "https://example.com/hoge/hoge2"
   title: "Hoge2"
   tags:
-    - tag_hoge1
-    - tag_hoge3
+    - tag1
+    - tag3
   clicks: 10

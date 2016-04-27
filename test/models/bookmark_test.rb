@@ -8,13 +8,13 @@ class BookmarkTest < ActiveSupport::TestCase
 
   test 'Search with nil query' do
     @bookmarks = Bookmark.search(nil)
-    assert @bookmarks.include?(bookmarks(:two))
+    assert @bookmarks.include?(bookmarks(:bookmark2))
   end
 
   test 'Search with existing query' do
     @bookmarks = Bookmark.search("one")
-    assert @bookmarks.include?(bookmarks(:one))
-    assert_not @bookmarks.include?(bookmarks(:two))
+    assert @bookmarks.include?(bookmarks(:bookmark1))
+    assert_not @bookmarks.include?(bookmarks(:bookmark2))
   end
 
 end
