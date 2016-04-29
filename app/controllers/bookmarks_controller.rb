@@ -6,6 +6,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks.json
   def index
     @bookmarks = Bookmark.search(params[:q])
+    @tags = Tag.top(3)
   end
 
   # GET /bookmarks/1
