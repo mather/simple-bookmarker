@@ -5,8 +5,8 @@ class BookmarksController < ApplicationController
   # GET /bookmarks?q=substring
   # GET /bookmarks.json
   def index
-    @bookmarks = Bookmark.search(params[:q])
-    @tags = Tag.top(3)
+    @bookmarks = Bookmark.eager_load(:tags).search(params[:q])
+    @tags = Tag.eager_load(:bookmarks).top(3)
   end
 
   # GET /bookmarks/1

@@ -7,6 +7,8 @@
     <title><%= content_for?(:title) ? yield(:title) : "SimpleBookmarker" %></title>
     <%= csrf_meta_tags %>
 
+    <%= include_gon %>
+
     <%= stylesheet_link_tag "application", :media => "all" %>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
@@ -37,7 +39,6 @@
     <![endif]-->
   </head>
   <body>
-    <%= include_gon %>
 
     <div class="navbar navbar-default navbar-static-top">
       <div class="container">
