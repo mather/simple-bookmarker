@@ -3,12 +3,7 @@
   <h1><%= t 'tag.title', tag: @tag.name , default: model_class.model_name.human.titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <% @bookmarks.each do |bookmark| %>
-    <dt><strong><%= link_to bookmark.title, bookmark_path(bookmark) %>:</strong></dt>
-    <dd><%= link_to bookmark.url, jump_bookmark_path(bookmark) %></dd>
-  <% end %>
-</dl>
+<%= render partial: "bookmarks/list" %>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
               tags_path, :class => 'btn btn-default'  %>

@@ -9,31 +9,9 @@
       <%= submit_tag "Search" %>
     </div>
   <% end %>
-  <table class="table table-striped">
-    <% @bookmarks.each do |bookmark| %>
-      <tr>
-        <td>
-          <div>
-            <%= link_to bookmark.title, jump_bookmark_path(bookmark), class: "bookmark_title" %>
-            <% bookmark.tags.each do |tag| %>
-              <%= link_to tag.name, tag_path(tag), class: "btn btn-default btn-xs" %>
-            <% end %>
-          </div>
-          <div><span class="bookmark_url"><%= fa_icon :link, text: truncate(bookmark.url, length: 50, separator: "/") %> &nbsp; (<%= bookmark.clicks %> clicks)</span></div>
-          <div><span class="bookmark_description"><%= truncate(bookmark.description, length: 50) do %><%= link_to '詳細を見る', bookmark_path(bookmark) %><% end %></span></div>
-        </td>
-        <td>
-          <%= link_to fa_icon(:edit, text: t('.edit', :default => t("helpers.links.edit"))),
-                      edit_bookmark_path(bookmark), :class => 'btn btn-default btn-xs' %>
-          <%= link_to fa_icon(:close, text: t('.destroy', :default => t("helpers.links.destroy"))),
-                      bookmark_path(bookmark),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-danger btn-xs' %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+
+  <%= render partial: "list" %>
+  
   <%= link_to t('.new', :default => t("helpers.links.new")),
               new_bookmark_path,
               :class => 'btn btn-primary' %>
