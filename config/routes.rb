@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root 'bookmarks#index'
+
   resources :bookmarks
   get 'bookmarks/:id/jump', to: 'bookmarks#jump', as: :jump_bookmark
 
