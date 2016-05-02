@@ -8,3 +8,9 @@ ready = ->
 
 $(document).ready(ready)
 $(document).on("page:load", ready)
+
+@fetchTitle = ->
+  targetUrl = $("#bookmark_url").val()
+  request = $.get '/fetch_title.json?url=' + targetUrl
+  request.success (data) ->
+    $('#bookmark_title').val(data.title)

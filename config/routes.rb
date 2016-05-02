@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :bookmarks
   get 'bookmarks/:id/jump', to: 'bookmarks#jump', as: :jump_bookmark
+  get 'fetch_title', to: 'bookmarks#fetch_title'
 
   get 'tags', to: 'tags#index', as: 'tags'
   get 'tags/:id', to: 'tags#show', as: 'tag'

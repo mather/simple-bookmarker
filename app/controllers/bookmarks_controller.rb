@@ -1,3 +1,7 @@
+require 'open-uri'
+require 'timeout'
+require 'nokogiri'
+
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy, :jump]
 
@@ -80,6 +84,22 @@ class BookmarksController < ApplicationController
       else
         format.html { redirect_to :back }
       end
+    end
+  end
+
+  def fetch_title
+    url = params[:url]
+    @title = nil
+    begin
+      Timeout.timeout(10) {
+        doc = Nokogiri::HTML(open(url))
+        @title = doc.title
+      }
+    rescue Timeout::Error
+      @title = nil
+    end
+    respond_to do |format|
+      format.json { render :get_title }
     end
   end
 
