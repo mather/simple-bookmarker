@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 bookmark1:
-  url: "http://example.com"
+  url: "http://example.com/"
   title: "title one"
   description: "hogehoge\nhugahuga"
   clicks: 0
