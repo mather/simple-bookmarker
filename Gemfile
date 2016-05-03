@@ -34,6 +34,8 @@ gem 'gon'
 # Font Awesome
 gem 'font-awesome-rails'
 
+gem 'addressable'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

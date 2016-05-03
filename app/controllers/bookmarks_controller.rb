@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'timeout'
 require 'nokogiri'
+require 'addressable/uri'
 
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :edit, :update, :destroy, :jump]
@@ -80,7 +81,7 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
       if @bookmark.save
-        format.html { redirect_to @bookmark.url, status: 302 }
+        format.html { redirect_to Addressable::URI.parse(@bookmark.url).normalize.to_s, status: 302 }
       else
         format.html { redirect_to :back }
       end
@@ -92,7 +93,7 @@ class BookmarksController < ApplicationController
     @title = nil
     begin
       Timeout.timeout(10) {
-        doc = Nokogiri::HTML(open(url))
+        doc = Nokogiri::HTML(open(Addressable::URI.parse(url).normalize.to_s))
         @title = doc.title
       }
     rescue Timeout::Error

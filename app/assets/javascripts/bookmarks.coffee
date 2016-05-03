@@ -11,6 +11,6 @@ $(document).on("page:load", ready)
 
 @fetchTitle = ->
   targetUrl = $("#bookmark_url").val()
-  request = $.get '/fetch_title.json?url=' + targetUrl
+  request = $.get '/fetch_title.json?url=' + encodeURIComponent(targetUrl)
   request.success (data) ->
     $('#bookmark_title').val(data.title)
