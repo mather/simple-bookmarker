@@ -6,4 +6,10 @@ class Tag < ActiveRecord::Base
   def self.top(n)
     Tag.joins(:bookmarks).group("tags.id").order("count(tags.id) desc").limit(n)
   end
+
+  def self.destroy_if_empty
+    Tag.where(Tag.arel_table[:id].not_in(Tag.joins(:bookmarks).map{|t| t.id })).each do |tag|
+      tag.destroy
+    end
+  end
 end

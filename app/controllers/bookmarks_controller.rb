@@ -56,6 +56,7 @@ class BookmarksController < ApplicationController
 
     respond_to do |format|
       if @bookmark.update(bookmark_params)
+        Tag.destroy_if_empty
         format.html { redirect_to @bookmark, notice: 'Bookmark was successfully updated.' }
         format.json { render :show, status: :ok, location: @bookmark }
       else
@@ -69,6 +70,8 @@ class BookmarksController < ApplicationController
   # DELETE /bookmarks/1.json
   def destroy
     @bookmark.destroy
+    Tag.destroy_if_empty
+
     respond_to do |format|
       format.html { redirect_to bookmarks_url, notice: 'Bookmark was successfully destroyed.' }
       format.json { head :no_content }

@@ -15,4 +15,10 @@ class TagTest < ActiveSupport::TestCase
     assert_not top3_tags.select { |t| t.name == tags(:tag1).name }.empty?, "tag1 should be included in top 3"
     assert top3_tags.select { |t| t.name == tags(:tag4).name }.empty?, "tag4 should not be included in top 3"
   end
+
+  test "Destroy empty tags" do
+    assert_difference("Tag.count", -1) {
+      Tag.destroy_if_empty
+    }
+  end
 end
