@@ -6,29 +6,22 @@
 
 Demo Site: [https://glacial-inlet-12427.herokuapp.com/](https://glacial-inlet-12427.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Requirements
 
-Things you may want to cover:
+* Ruby version: 2.3.1
 
-* Ruby version
+### Run tests
 
-* System dependencies
+```
+$ bin/rake test
+```
 
-* Configuration
+### Deployment
 
-* Database creation
+Create database.
 
-* Database initialization
+```
+$ bin/rake db:migrate
+```
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-`rake doc:app` .
+Then, start Rails application as you like.
