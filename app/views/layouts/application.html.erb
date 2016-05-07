@@ -52,6 +52,12 @@
             <li><%= link_to "Bookmarks", bookmarks_path  %></li>
             <li><%= link_to "Tags", tags_path  %></li>
           </ul>
+          <%= form_tag(bookmarks_path, method: :get, class: "navbar-form navbar-right", role: "search") do %>
+            <div class="form-group">
+              <%= text_field_tag 'q', @query, class: "form-control", placeholder: "Search bookmark", size: 50 %>
+              <%= submit_tag "Search", class: "btn btn-default" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
