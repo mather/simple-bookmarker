@@ -13,7 +13,7 @@
     <% @tags.each do |tag| %>
       <tr>
         <td><%= link_to tag.name, tag_path(tag) %></td>
-        <td><%= tag.bookmarks.count %></td>
+        <td><%= tag.bookmarks_count %></td>
       </tr>
     <% end %>
   </tbody>

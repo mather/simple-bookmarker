@@ -1,7 +1,7 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show]
   def index
-    @tags = Tag.joins(:bookmarks).eager_load(:bookmarks).group("tags.id").order("count(bookmarks.id) desc")
+    @tags = Tag.joins(:bookmarks).select("tags.*, count(bookmarks.id) as bookmarks_count").group("tags.id").order("bookmarks_count desc")
   end
 
   def show
