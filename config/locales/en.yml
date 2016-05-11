@@ -23,3 +23,10 @@ en:
   hello: "Hello world"
   tag:
     title: "Bookmark list for \"%{tag}\""
+  activerecord:
+    models:
+      bookmark: Bookmark
+    attributes:
+      bookmark:
+        url: URL
+        title: Title
