@@ -1,0 +1,10 @@
+ja:
+  tag:
+    title: "\"%{tag}\"のブックマーク一覧"
+  activerecord:
+    models:
+      bookmark: ブックマーク
+    attributes:
+      bookmark:
+        url: URL
+        title: タイトル
