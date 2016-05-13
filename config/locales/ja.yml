@@ -4,6 +4,7 @@ ja:
   activerecord:
     models:
       bookmark: ブックマーク
+      tag: タグ
     attributes:
       bookmark:
         url: URL
