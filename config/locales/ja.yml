@@ -1,6 +1,25 @@
 ja:
-  tag:
-    title: "\"%{tag}\"のブックマーク一覧"
+  tags:
+    index:
+      title: タグ一覧
+    show:
+      title: "\"%{tag}\"のブックマーク一覧"
+    top_tags: "トップ %{n} タグ"
+  bookmarks:
+    fetch_title: URLからタイトルを取得
+    search:
+      button: ブックマークを検索
+      placeholder: タイトルや説明文で検索
+    index:
+      title: ブックマーク一覧
+      new: ブックマークを追加
+    new:
+      title: 新規ブックマークを追加
+    edit:
+      title: ブックマークを編集
+  navbar:
+    bookmarks: ブックマーク
+    tags: タグ
   activerecord:
     models:
       bookmark: ブックマーク
@@ -9,3 +28,18 @@ ja:
       bookmark:
         url: URL
         title: タイトル
+        description: 説明
+        clicks: クリック数
+        tags: タグ
+      tag:
+        name: タグ名
+  helpers:
+    submit:
+      create: 登録
+      update: 変更
+      delete: 削除
+    links:
+      cancel: キャンセル
+      back: 戻る
+      edit: 編集
+      destroy: 削除

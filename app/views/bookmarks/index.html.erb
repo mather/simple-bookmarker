@@ -1,19 +1,20 @@
 <%- model_class = Bookmark -%>
 <div class="col-sm-9">
   <div class="page-header">
-    <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+    <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %>
+    <small><%= link_to t('.new', :default => t("helpers.links.new")),
+                new_bookmark_path,
+                :class => 'btn btn-primary' %></small></h1>
   </div>
 
 
   <%= render partial: "list" %>
 
-  <%= link_to t('.new', :default => t("helpers.links.new")),
-              new_bookmark_path,
-              :class => 'btn btn-primary' %>
+
 </div>
 <div class="col-sm-3">
   <div class="well sidebar-nav">
-    <h3>Top <%= @tags.length %> tags</h3>
+    <h3><%= t "tags.top_tags", n: @tags.length, default: "Top #{@tags.length} tags" %></h3>
     <ul class="nav nav-list">
       <% @tags.each do |tag| %>
         <li><%= link_to tag.name, tag_path(tag) %></li>
