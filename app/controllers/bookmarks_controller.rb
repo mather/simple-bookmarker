@@ -10,7 +10,7 @@ class BookmarksController < ApplicationController
   # GET /bookmarks?q=substring
   # GET /bookmarks.json
   def index
-    @bookmarks = Bookmark.search(params[:q])
+    @bookmarks = Bookmark.search(params[:q]).order("bookmarks.clicks desc")
     @tags = Tag.top(3)
   end
 
