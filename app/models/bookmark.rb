@@ -8,6 +8,8 @@ class Bookmark < ActiveRecord::Base
 
   has_and_belongs_to_many :tags
 
+  paginates_per 10
+
   def increment
     self.clicks += 1
   end

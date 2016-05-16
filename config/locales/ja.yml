@@ -43,3 +43,10 @@ ja:
       back: 戻る
       edit: 編集
       destroy: 削除
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "..."

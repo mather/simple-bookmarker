@@ -4,6 +4,8 @@ class Tag < ActiveRecord::Base
 
   has_and_belongs_to_many :bookmarks
 
+  paginates_per 20
+
   def self.top(n)
     Tag.joins(:bookmarks).group("tags.id").order("count(tags.id) desc").limit(n)
   end
