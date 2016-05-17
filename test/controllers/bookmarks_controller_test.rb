@@ -11,6 +11,11 @@ class BookmarksControllerTest < ActionController::TestCase
     assert_not_nil assigns(:bookmarks)
   end
 
+  test "should search bookmarks" do
+    get :index, q: "Two"
+    assert_response :success
+  end
+
   test "should get new" do
     get :new
     assert_response :success
