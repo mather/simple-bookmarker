@@ -5,15 +5,19 @@ class BookmarksControllerTest < ActionController::TestCase
     @bookmark = bookmarks(:bookmark1)
   end
 
-  test "should get index" do
+  test "should get index, and bookmarks are sorted by descending order of clicks" do
     get :index
     assert_response :success
     assert_not_nil assigns(:bookmarks)
+    assert_equal assigns(:bookmarks)[0].id, bookmarks(:bookmark2).id
+    assert_equal assigns(:bookmarks)[3].id, bookmarks(:bookmark1).id
   end
 
   test "should search bookmarks" do
     get :index, q: "Two"
     assert_response :success
+    assert_equal assigns(:bookmarks)[0].id, bookmarks(:bookmark2).id
+    assert_nil assigns(:bookmarks)[1]
   end
 
   test "should get new" do
