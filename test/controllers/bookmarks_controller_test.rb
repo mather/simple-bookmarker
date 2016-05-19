@@ -42,6 +42,7 @@ class BookmarksControllerTest < ActionController::TestCase
   test "should show bookmark" do
     get :show, id: @bookmark
     assert_response :success
+    assert_equal assigns(:bookmark).id, @bookmark.id
   end
 
   test "should get edit" do
