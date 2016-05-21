@@ -9,6 +9,7 @@ class TagsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:tags)
+    assert_equal assigns(:tags)[0].id, tags(:tag1).id
   end
 
   test "should get show" do
